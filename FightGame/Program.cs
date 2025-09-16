@@ -1,7 +1,22 @@
-﻿//Overview
-// Fighter name input, choose between 3 classes, glasscannon 99 - 100 damage, 1hp (chance to oneshot)
-//class 2 normal, 100 hp, 10-30 dmg
-//class 3 tank, 150 hp 5-20 dmg
+﻿/*Overview
+Fighter name input, choose between 3 classes, glasscannon 99 - 100 damage, 1hp (chance to oneshot)
+class 2 normal, 100 hp, 10-30 dmg
+class 3 tank, 150 hp 5-20 dmg
+
+To do: Make hp unable to go under 0, Class selection (might need to learn classes or something)
+
+*/
+
+
+
+
+
+
+
+
+
+
+
 int PlayerHP = 100;
 int MonsterHP = 100;
 string name = "";
@@ -21,15 +36,17 @@ while (PlayerHP > 0 && MonsterHP > 0)
     Console.WriteLine($"{name}'s HP:{PlayerHP}, Monster HP: {MonsterHP}");
     Console.WriteLine("");
 
-    int PlayerDMG = Random.Shared.Next(10, 30);
+    int PlayerDMG = Random.Shared.Next(PlayerMinDmg, PlayerMaxDmg   );
     Console.WriteLine($"{name}'s turn!");
     MonsterHP -= PlayerDMG;
+    if (MonsterHP < 0) MonsterHP = 0;
     Console.WriteLine($"{name} did {PlayerDMG} DMG");
 
     int MonsterDMG = Random.Shared.Next(10, 30);
     Console.WriteLine("");
     Console.WriteLine($"{monster}'s turn!");
     PlayerHP -= MonsterDMG;
+    if (PlayerHP < 0) PlayerHP = 0;
     Console.WriteLine($"{monster} did {MonsterDMG} DMG");
     Round++;
     Console.WriteLine("");
@@ -40,7 +57,7 @@ while (PlayerHP > 0 && MonsterHP > 0)
 
 Console.WriteLine("Fight over!");
 Console.WriteLine($"Player HP:{PlayerHP}, Monster HP: {MonsterHP}");
-if (PlayerHP <= 0 && MonsterHP <= 0)
+if (PlayerHP == 0 && MonsterHP == 0)
 {
     Console.WriteLine("Draw");
 }
