@@ -1,10 +1,12 @@
 ﻿/*Overview
-Fighter name input, choose between 3 classes, glasscannon 99 - 100 damage, 1hp (chance to oneshot)
-class 2 normal, 100 hp, 10-30 dmg
-class 3 tank, 150 hp 5-20 dmg
+yes the monsters are lord of the mysteries references, yes i am obsessed with lotm
+maybe add a shop? would be cool but hard to implement, would have to store money interger in diffrent file to prevent wiping when code reruns
 
-To do: Make hp unable to go under 0, Class selection (might need to learn classes or something)
 
+TODO!
+
+Loop the game after ending, put hp and damage into loop to reset after restarting.
+Keep name out of loop so you dont need to re enter it
 */
 
 
@@ -12,7 +14,8 @@ To do: Make hp unable to go under 0, Class selection (might need to learn classe
 int PlayerHP = 100;
 int MonsterHP = 100;
 string name = "";
-string monster = "Curly Haired Baboon";
+string[] monsters = { "Curly Haired Baboon", "Amon", "Medici" };
+string monster = monsters[Random.Shared.Next(monsters.Length)];
 int Round = 1;
 int PlayerMinDmg = 10;
 int PlayerMaxDmg = 31;
@@ -33,9 +36,9 @@ while (build != "1" && build != "2" && build != "3" && build != "4")
 }
 if (build == "1")
 {
-    PlayerHP -= 99;
-    PlayerMinDmg += 89;
-    PlayerMaxDmg += 70;
+    PlayerHP = 1;
+    PlayerMinDmg = 99;
+    PlayerMaxDmg = 101;
     Console.WriteLine("Classcannon chosen!");
 }
 else if (build == "2")
@@ -44,16 +47,16 @@ else if (build == "2")
 }
 else if (build == "3")
 {
-    PlayerHP += 75;
-    PlayerMinDmg -= 5;
-    PlayerMaxDmg -= 15;
+    PlayerHP = 175;
+    PlayerMinDmg = 5;
+    PlayerMaxDmg = 15;
     Console.WriteLine("Tank chosen!");
 }
 else if (build == "4")
 {
-    PlayerHP += 4900;
-    PlayerMinDmg -= 9;
-    PlayerMaxDmg -= 29;
+    PlayerHP = 5000;
+    PlayerMinDmg = 1;
+    PlayerMaxDmg = 2;
     Console.WriteLine("Unpenetrable Fortress chosen!");
 }
 
