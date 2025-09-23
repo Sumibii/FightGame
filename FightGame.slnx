@@ -1,4 +1,3 @@
 <Solution>
-  <Project Path="../Quiz/Quiz/Quiz.csproj" />
   <Project Path="FightGame/FightGame.csproj" />
 </Solution>
