@@ -24,6 +24,8 @@ int PlayerMinDmg = 10;
 int PlayerMaxDmg = 26;
 int MonsterHP = 100;
 int playerhitchance = 50;
+int MonsterBaseMinDMG = 10;
+int MonsterBaseMaxDMG = 31;
 
 void ShopMenu(int Wave)
 {
@@ -151,6 +153,8 @@ while (Play)
 
             Console.WriteLine($"{name}'s HP:{PlayerHP}, Monster HP: {MonsterHP}");
             Console.WriteLine("");
+            Round++
+            Console.ReadLine();
         }
         else if (turn > playerhitchance)
         {
@@ -173,6 +177,7 @@ while (Play)
             if (MonsterHP < 0) MonsterHP = 0; // Prevents hp going under 0
             Console.WriteLine($"{name} did {PlayerDMG} DMG");
             Round++;
+            Console.ReadLine();
         }
     }
 
