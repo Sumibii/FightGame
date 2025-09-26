@@ -1,4 +1,14 @@
-﻿string name = "";
+﻿/*
+TODO!
+Add crafting,
+How: redo how items work, intead of the purchase giving you stats it gives you += 1 to the interger of the item.
+
+
+ */
+
+
+
+string name = "";
     Console.WriteLine("Welcome to the Fighting Game!");
     Console.WriteLine("What's your name?");
     name = Console.ReadLine();
@@ -91,6 +101,25 @@ while (running)
         You have {Gold} gold
 
         1. Book of Calamity, Increase min/max damage by 50, Decrease hitchance by 6% Costs 1500 Gold
+
+        2. Black Emperor's Crown, Increase HP by 150, decrease min/max damage by 15. Costs 1500 Gold
+
+        3. Die of Probability, Increase hit chance by 10%, Decrease HP by 100. Costs 3000 Gold
+
+        4. Exit shop
+
+        Your current stats: HP:{PlayerHP}, Minimum Damage: {PlayerMinDmg}, Max Damage: {PlayerMaxDmg - 1}, Hitchance(%): {playerhitchance};
+        """);
+        }
+        else if (Wave >= 30)
+        {
+            Console.WriteLine($""" 
+        Greetings {name}!
+        Congratulations on becoming a great old one, i have restocked my inventory not with sealed artifacts but with authorities over concepts.
+
+        You have {Gold} gold
+
+        1. Authority of Space & Time, Increase min/max damage by 250 Costs 15000 Gold 
 
         2. Black Emperor's Crown, Increase HP by 150, decrease min/max damage by 15. Costs 1500 Gold
 
@@ -317,6 +346,18 @@ Main Menu
         else if (Wave == 15)
         {
             Console.WriteLine("Overcome with desire for godhood you decide to advance again, after a intense apotheosis ritual you have finally become a true god, you have become, The Fool");
+        }
+        else if (Wave == 20)
+        {
+            Console.WriteLine("After spreading your name across the lands the people have started to worship you, your status as a diety has allowed you to learn of a greater power than Sequence 0");
+        }
+        else if (Wave == 25)
+        {
+            Console.WriteLine("You have gathered all the ingredients and start your advancement to go beyond the sequences, also know as becoming a great old one");
+        }
+        else if (Wave == 30)
+        {
+            Console.WriteLine("After a long battle with the corruption of 'The Oldest One' you advance to become the Lord of The Mysteries.");
         }
 
         PlayerHP = BaseHP;
