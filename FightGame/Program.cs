@@ -5,7 +5,7 @@
 bool running = true;
     Console.Title = "Fighting Game";
     int Wave = 1;
-    int Gold = 500;
+    int Gold = 50;
     bool Play = false;
     string mainmenu = "";
     int BaseHP = 100;
@@ -103,7 +103,7 @@ while (running)
         }
     }
     Console.Clear();
-Console.WriteLine(""" 
+    Console.WriteLine(""" 
 Main Menu
 
 1. Play
@@ -140,7 +140,7 @@ Main Menu
             }
             if (itemchoice == "1" && Wave <= 5 && Gold >= 50)
             {
-                Console.Clear();        
+                Console.Clear();
                 Console.WriteLine("\nMutated Sun Sacred Emblem bought! \n");
                 PlayerMaxDmg += 5;
                 PlayerMinDmg += 5;
@@ -158,6 +158,7 @@ Main Menu
             }
             else if (itemchoice == "1" && Wave >= 10 && Wave < 15 && Gold >= 450)
             {
+                Console.Clear();
                 Console.WriteLine("\nSword of the Sun bought!\n");
                 PlayerMaxDmg += 20;
                 PlayerMinDmg += 20;
@@ -166,6 +167,7 @@ Main Menu
             }
             else if (itemchoice == "1" && Wave >= 15 && Gold >= 1500)
             {
+                Console.Clear();
                 Console.WriteLine("\nBook of Calamity bought!\n");
                 PlayerMaxDmg += 50;
                 PlayerMinDmg += 50;
@@ -174,6 +176,7 @@ Main Menu
             }
             else if (itemchoice == "2" && Wave < 5 && Gold >= 50)
             {
+                Console.Clear();
                 Console.WriteLine("\nMisfortune Cloth Puppet bought!\n");
                 PlayerMaxDmg -= 3;
                 PlayerMinDmg -= 3;
@@ -182,6 +185,7 @@ Main Menu
             }
             else if (itemchoice == "2" && Wave >= 5 && Wave < 10 && Gold >= 150)
             {
+                Console.Clear();
                 Console.WriteLine("\nPrideful Armor bought!\n");
                 PlayerMaxDmg -= 5;
                 PlayerMinDmg -= 5;
@@ -190,6 +194,7 @@ Main Menu
             }
             else if (itemchoice == "2" && Wave >= 10 && Wave < 15 && Gold >= 450)
             {
+                Console.Clear();
                 Console.WriteLine("\nBerserker's Armor bought!\n");
                 PlayerMaxDmg -= 10;
                 PlayerMinDmg -= 10;
@@ -198,6 +203,7 @@ Main Menu
             }
             else if (itemchoice == "2" && Wave >= 15 && Gold >= 1500)
             {
+                Console.Clear();
                 Console.WriteLine("\nBlack Emperor's Crown bought!\n");
                 PlayerMaxDmg -= 15;
                 PlayerMinDmg -= 15;
@@ -206,6 +212,7 @@ Main Menu
             }
             else if (itemchoice == "3" && Wave < 5 && Gold >= 100)
             {
+                Console.Clear();
                 Console.WriteLine("\nSpirit Medium's Mirror bought!\n");
                 playerhitchance += 3;
                 BaseHP -= 15;
@@ -213,6 +220,7 @@ Main Menu
             }
             else if (itemchoice == "3" && Wave >= 5 && Wave < 10 && Gold >= 300)
             {
+                Console.Clear();
                 Console.WriteLine("\nCreeping Hunger bought!\n");
                 playerhitchance += 5;
                 BaseHP -= 25;
@@ -220,13 +228,14 @@ Main Menu
             }
             else if (itemchoice == "3" && Wave >= 10 && Wave < 15 && Gold >= 900)
             {
+                Console.Clear();
                 Console.WriteLine("\nEye of Omniscience bought!\n");
                 playerhitchance += 7;
                 BaseHP -= 50;
                 Gold -= 900;
             }
             else if (itemchoice == "3" && Wave >= 15 && Gold >= 3000)
-            {
+            {Console.Clear();
                 Console.WriteLine("\nDie of Probability bought!\n");
                 playerhitchance += 10;
                 BaseHP -= 100;
@@ -324,15 +333,17 @@ Main Menu
             Console.WriteLine($"Round {Round}");
             Console.WriteLine("");
 
-            int turn = Random.Shared.Next(playerhitchance, 101);
+            int turn = 0;
+            turn = Random.Shared.Next(1, 101);
 
-            if (turn <= playerhitchance && turn > 0)
+
+            if (turn <= playerhitchance)
             {
                 Console.WriteLine("Player goes first!");
                 int PlayerDMG = Random.Shared.Next(PlayerMinDmg, PlayerMaxDmg);
                 Console.WriteLine($"{name}'s turn!");
                 MonsterHP -= PlayerDMG;
-                if (MonsterHP < 0) MonsterHP = 0; // Prevents hp going under 0
+                if (MonsterHP < 0) MonsterHP = 0;
                 Console.WriteLine($"{name} did {PlayerDMG} DMG");
                 if (MonsterHP <= 0)
                 {
@@ -349,7 +360,7 @@ Main Menu
                 Console.WriteLine($"{name}'s HP:{PlayerHP}, Monster HP: {MonsterHP}");
                 Console.WriteLine("Press a button to continue");
                 Console.ReadLine();
-                
+
                 Round++;
             }
             else if (turn > playerhitchance)
