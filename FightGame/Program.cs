@@ -1,4 +1,6 @@
-﻿string playername = "";
+﻿
+    
+    string playername = "";
     Console.WriteLine("Welcome to the Fighting Game!");
     Console.WriteLine("What's your name?");
     playername = Console.ReadLine();
@@ -85,7 +87,7 @@ while (running)
         Your current stats: HP:{PlayerHP}, Minimum Damage: {PlayerMinDmg}, Max Damage: {PlayerMaxDmg - 1}, Hitchance(%): {playerhitchance}.
         """);
         }
-        else if (Wave >= 15)
+        else if (Wave >= 15 && Wave < 30)
         {
             Console.WriteLine($""" 
         Welcome to the shop!
@@ -309,9 +311,10 @@ Main Menu
             {
                 inShop = false;
             }
-            else
+            else if (itemchoice != "1" && itemchoice != "2" && itemchoice != "3" && itemchoice != "4")
             {
                 Console.Clear();
+                Console.WriteLine("Invalid choice!")
             }
 
 
@@ -400,7 +403,7 @@ Main Menu
         }
 
         PlayerHP = BaseHP;
-        MonsterHP = 40 * Wave + 100;
+        MonsterHP = 40 * Wave + 10;
         MonsterMinDMG = 4 * Wave + 5 ;
         MonsterMaxDMG = 12 * Wave + 20;
         string[] monsters = { "Curly Haired Baboon", "Amon", "Medici", "Lumian", "Member of Parliament", "Supernova Dominator", "Father of Curses", "Circle of Inevitability"};
@@ -511,3 +514,5 @@ Main Menu
         Play = false;
     }
 }
+        }
+    
