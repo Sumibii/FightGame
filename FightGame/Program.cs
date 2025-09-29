@@ -47,9 +47,9 @@ while (running)
 
         You have {Gold} gold
 
-        1. Mutated Sun Sacred Emblem, Increase min/max damage by 5, decrease hitchance by 2%. Costs 50 Gold
+        1. Mutated Sun Sacred Emblem, Increase min/max damage by 5, decrease hitchance by 2%. Costs 40 Gold
 
-        2. Misfortune Cloth Puppet, Increase HP by 25, decrease min/max damage by 3. Costs 50 Gold
+        2. Misfortune Cloth Puppet, Increase HP by 25, decrease min/max damage by 3. Costs 40 Gold
 
         3. Spirit Medium's Mirror, Increase hit chance by 3%, Decrease HP by 10. Costs 100 Gold
 
@@ -124,7 +124,7 @@ while (running)
 
         You have {Gold} gold
 
-        1. Authority of Space & Time, Increase min/max damage by 250 Costs 1500 Gold 
+        1. Authority of Fooling, Fool your enemies into taking more damage. Increase min/max damage by 250 Costs 1500 Gold 
 
         2. Authority of Miracles, Increase HP by 1000. Costs 1500 Gold
 
@@ -178,14 +178,14 @@ Main Menu
             {
                 itemchoice = Console.ReadLine();
             }
-            if (itemchoice == "1" && Wave <= 5 && Gold >= 50)
+            if (itemchoice == "1" && Wave <= 5 && Gold >= 40)
             {
                 Console.Clear();
                 Console.WriteLine("\nMutated Sun Sacred Emblem bought! \n");
                 PlayerMaxDmg += 5;
                 PlayerMinDmg += 5;
                 playerhitchance -= 2;
-                Gold -= 50;
+                Gold -= 40;
             }
             else if (itemchoice == "1" && Wave >= 5 && Wave < 10 && Gold >= 150)
             {
@@ -222,7 +222,7 @@ Main Menu
                 PlayerMinDmg += 250;
                 Gold -= 1500;
             }
-            else if (itemchoice == "2" && Wave < 5 && Gold >= 50)
+            else if (itemchoice == "2" && Wave < 5 && Gold >= 40)
             {
                 Console.Clear();
                 Console.WriteLine("\nMisfortune Cloth Puppet bought!\n");
@@ -230,7 +230,7 @@ Main Menu
                 PlayerMinDmg -= 3;
                 PlayerHP += 25;
                 BaseHP += 25;
-                Gold -= 50;
+                Gold -= 40;
             }
             else if (itemchoice == "2" && Wave >= 5 && Wave < 10 && Gold >= 150)
             {
@@ -278,10 +278,7 @@ Main Menu
                 BaseHP -= 10;
                 PlayerHP -= 10;
                 Gold -= 100;
-                if (playerhitchance > 100)
-                {
-                    playerhitchance = 100;
-                }
+                
             }
             else if (itemchoice == "3" && Wave >= 5 && Wave < 10 && Gold >= 300 && BaseHP > 25)
             {
@@ -291,10 +288,7 @@ Main Menu
                 BaseHP -= 25;
                 PlayerHP -= 25;
                 Gold -= 300;
-                if (playerhitchance > 100)
-                {
-                    playerhitchance = 100;
-                }
+                
             }
             else if (itemchoice == "3" && Wave >= 10 && Wave < 15 && Gold >= 500 && BaseHP > 50)
             {
@@ -304,10 +298,7 @@ Main Menu
                 BaseHP -= 50;
                 PlayerHP -= 50;
                 Gold -= 500;
-                if (playerhitchance > 100)
-                {
-                    playerhitchance = 100;
-                }
+                
             }
             else if (itemchoice == "3" && Wave >= 15  && Wave < 30 && Gold >= 1500 && BaseHP > 100)
             {
@@ -317,10 +308,7 @@ Main Menu
                 BaseHP -= 100;
                 PlayerHP -= 100;
                 Gold -= 1500;
-                if (playerhitchance > 100)
-                {
-                    playerhitchance = 100;
-                }
+               
             }
             else if (itemchoice == "3" && Wave >= 30 && Gold >=7500)
             {
@@ -424,18 +412,33 @@ Main Menu
         }
 
         PlayerHP = BaseHP;
-        MonsterHP = 100 * Wave / 2;
-        MonsterMinDMG = MonsterMinDMG * Wave / 2;
-        MonsterMaxDMG = MonsterMaxDMG * Wave / 2;
-        string[] monsters = { "Curly Haired Baboon", "Amon", "Medici", "Lumian", "Member of Parliament" };
+        MonsterHP = 40 * Wave + 100;
+        MonsterMinDMG = 4 * Wave + 5 ;
+        MonsterMaxDMG = 12 * Wave + 20;
+        string[] monsters = { "Curly Haired Baboon", "Amon", "Medici", "Lumian", "Member of Parliament", "Supernova Dominator", "Father of Curses", "Circle of Inevitability"};
         string monster = monsters[Random.Shared.Next(monsters.Length)];
         int Round = 1;
         string choice = "";
-
+        if (PlayerMinDmg < 0)
+        {
+            PlayerMinDmg = 0;
+        }
+        if (PlayerMaxDmg < 0)
+        {
+            PlayerMaxDmg = 0;
+        }
+        if (playerhitchance < 0)
+        {
+            playerhitchance = 0;
+        }
+        if (playerhitchance > 100)
+        {
+            playerhitchance = 100;
+        }
+        Console.WriteLine($"\nWave {Wave}");
         while (PlayerHP > 0 && MonsterHP > 0)
         {
             Console.WriteLine($"Round {Round}");
-            Console.WriteLine("");
 
             int turn = 0;
             turn = Random.Shared.Next(1, 101);
@@ -499,7 +502,7 @@ Main Menu
             Console.Clear();
             Console.WriteLine("You won");
             Wave += 1;
-            Gold += 50 * Wave / 2;
+            Gold += 25 * Wave + 10 * Wave;
             PlayerHP = BaseHP;
 
         }
