@@ -1,23 +1,11 @@
-﻿/*
-TODO!
-Add crafting,
-How: redo how items work, intead of the purchase giving you stats it gives you += 1 to the interger of the item.
-
-
- */
-
-
-
-
-string playername = "";
-
+﻿string playername = "";
     Console.WriteLine("Welcome to the Fighting Game!");
     Console.WriteLine("What's your name?");
     playername = Console.ReadLine();
-bool running = true;
+    bool running = true;
     Console.Title = "Fighting Game";
     int Wave = 1;
-    int Gold = 5000;
+    int Gold = 0;
     bool Play = false;
     string mainmenu = "";
     int BaseHP = 100;
