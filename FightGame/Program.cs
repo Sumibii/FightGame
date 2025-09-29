@@ -17,7 +17,7 @@ string playername = "";
 bool running = true;
     Console.Title = "Fighting Game";
     int Wave = 1;
-    int Gold = 50;
+    int Gold = 5000;
     bool Play = false;
     string mainmenu = "";
     int BaseHP = 100;
@@ -86,11 +86,11 @@ while (running)
 
         You have {Gold} gold
 
-        1. Sword of the Sun, Increase min/max damage by 20, Decrease hitchance by 5% Costs 450 Gold
+        1. Sword of the Sun, Increase min/max damage by 20, Decrease hitchance by 5% Costs 300 Gold
 
-        2. Berserker's Armor, Increase HP by 100, decrease min/max damage by 10. Costs 450 Gold
+        2. Berserker's Armor, Increase HP by 100, decrease min/max damage by 10. Costs 300 Gold
 
-        3. Eye of Omniscience, Increase hit chance by 7%, Decrease HP by 50. Costs 900 Gold
+        3. Eye of Omniscience, Increase hit chance by 7%, Decrease HP by 50. Costs 500 Gold
 
         4. Exit shop
 
@@ -105,11 +105,11 @@ while (running)
 
         You have {Gold} gold
 
-        1. Book of Calamity, Increase min/max damage by 50, Decrease hitchance by 6% Costs 1500 Gold
+        1. Book of Calamity, Increase min/max damage by 50, Decrease hitchance by 6% Costs 500 Gold
 
-        2. Black Emperor's Crown, Increase HP by 150, decrease min/max damage by 15. Costs 1500 Gold
+        2. Black Emperor's Crown, Increase HP by 150, decrease min/max damage by 15. Costs 500 Gold
 
-        3. Die of Probability, Increase hit chance by 10%, Decrease HP by 100. Costs 3000 Gold
+        3. Die of Probability, Increase hit chance by 10%, Decrease HP by 100. Costs 1500 Gold
 
         4. Exit shop
 
@@ -124,11 +124,11 @@ while (running)
 
         You have {Gold} gold
 
-        1. Authority of Space & Time, Increase min/max damage by 250 Costs 15000 Gold 
+        1. Authority of Space & Time, Increase min/max damage by 250 Costs 1500 Gold 
 
-        2.  Authority of Miracles, Increase HP by 1000. Costs 15000 Gold
+        2. Authority of Miracles, Increase HP by 1000. Costs 1500 Gold
 
-        3. King of Space-Time, Set hitchance to 100%. Costs 50000 Gold
+        3. King of Space-Time, Set hitchance to 100%. Costs 7500 Gold
 
         4. Exit shop
 
@@ -196,31 +196,31 @@ Main Menu
                 playerhitchance -= 3;
                 Gold -= 150;
             }
-            else if (itemchoice == "1" && Wave >= 10 && Wave < 15 && Gold >= 450)
+            else if (itemchoice == "1" && Wave >= 10 && Wave < 15 && Gold >= 300)
             {
                 Console.Clear();
                 Console.WriteLine("\nSword of the Sun bought!\n");
                 PlayerMaxDmg += 20;
                 PlayerMinDmg += 20;
                 playerhitchance -= 5;
-                Gold -= 450;
+                Gold -= 300;
             }
-            else if (itemchoice == "1" && Wave >= 15 && Gold >= 1500)
+            else if (itemchoice == "1" && Wave >= 15 && Wave < 30 &&Gold >= 500)
             {
                 Console.Clear();
                 Console.WriteLine("\nBook of Calamity bought!\n");
                 PlayerMaxDmg += 50;
                 PlayerMinDmg += 50;
                 playerhitchance -= 6;
-                Gold -= 1500;
+                Gold -= 500;
             }
-            else if (itemchoice == "1" && Wave >= 30 && Gold >= 15000)
+            else if (itemchoice == "1" && Wave >= 30 && Gold >= 1500)
             {
                 Console.Clear();
                 Console.WriteLine("\nAuthority of Space-Time bought!\n");
                 PlayerMaxDmg += 250;
                 PlayerMinDmg += 250;
-                Gold -= 15000;
+                Gold -= 1500;
             }
             else if (itemchoice == "2" && Wave < 5 && Gold >= 50)
             {
@@ -228,6 +228,7 @@ Main Menu
                 Console.WriteLine("\nMisfortune Cloth Puppet bought!\n");
                 PlayerMaxDmg -= 3;
                 PlayerMinDmg -= 3;
+                PlayerHP += 25;
                 BaseHP += 25;
                 Gold -= 50;
             }
@@ -238,91 +239,103 @@ Main Menu
                 PlayerMaxDmg -= 5;
                 PlayerMinDmg -= 5;
                 BaseHP += 50;
+                PlayerHP += 50;
                 Gold -= 150;
             }
-            else if (itemchoice == "2" && Wave >= 10 && Wave < 15 && Gold >= 450)
+            else if (itemchoice == "2" && Wave >= 10 && Wave < 15 && Gold >= 300)
             {
                 Console.Clear();
                 Console.WriteLine("\nBerserker's Armor bought!\n");
                 PlayerMaxDmg -= 10;
                 PlayerMinDmg -= 10;
                 BaseHP += 100;
-                Gold -= 450;
+                PlayerHP += 100;
+                Gold -= 300;
             }
-            else if (itemchoice == "2" && Wave >= 15 && Gold >= 1500)
+            else if (itemchoice == "2" && Wave >= 15 && Wave < 30 && Gold >= 500)
             {
                 Console.Clear();
                 Console.WriteLine("\nBlack Emperor's Crown bought!\n");
                 PlayerMaxDmg -= 15;
                 PlayerMinDmg -= 15;
                 BaseHP += 150;
-                Gold -= 1500;
+                PlayerHP += 150;
+                Gold -= 500;
             }
-            else if (itemchoice == "2" && Wave >= 30 && Gold >= 15000)
+            else if (itemchoice == "2" && Wave >= 30 && Gold >= 1500)
             {
                 Console.Clear();
                 Console.WriteLine("\nAuthority of Miracles bought!\n");
                 BaseHP += 1000;
-                Gold -= 15000;
+                PlayerHP += 1000;
+                Gold -= 1500;
             }
-            else if (itemchoice == "3" && Wave < 5 && Gold >= 100)
+            else if (itemchoice == "3" && Wave < 5 && Gold >= 100 && BaseHP > 15)
             {
                 Console.Clear();
                 Console.WriteLine("\nSpirit Medium's Mirror bought!\n");
                 playerhitchance += 3;
-                BaseHP -= 15;
+                BaseHP -= 10;
+                PlayerHP -= 10;
                 Gold -= 100;
                 if (playerhitchance > 100)
                 {
                     playerhitchance = 100;
                 }
             }
-            else if (itemchoice == "3" && Wave >= 5 && Wave < 10 && Gold >= 300)
+            else if (itemchoice == "3" && Wave >= 5 && Wave < 10 && Gold >= 300 && BaseHP > 25)
             {
                 Console.Clear();
                 Console.WriteLine("\nCreeping Hunger bought!\n");
                 playerhitchance += 5;
                 BaseHP -= 25;
+                PlayerHP -= 25;
                 Gold -= 300;
                 if (playerhitchance > 100)
                 {
                     playerhitchance = 100;
                 }
             }
-            else if (itemchoice == "3" && Wave >= 10 && Wave < 15 && Gold >= 900)
+            else if (itemchoice == "3" && Wave >= 10 && Wave < 15 && Gold >= 500 && BaseHP > 50)
             {
                 Console.Clear();
                 Console.WriteLine("\nEye of Omniscience bought!\n");
                 playerhitchance += 7;
                 BaseHP -= 50;
-                Gold -= 900;
+                PlayerHP -= 50;
+                Gold -= 500;
                 if (playerhitchance > 100)
                 {
                     playerhitchance = 100;
                 }
             }
-            else if (itemchoice == "3" && Wave >= 15 && Gold >= 3000)
+            else if (itemchoice == "3" && Wave >= 15  && Wave < 30 && Gold >= 1500 && BaseHP > 100)
             {
                 Console.Clear();
                 Console.WriteLine("\nDie of Probability bought!\n");
                 playerhitchance += 10;
                 BaseHP -= 100;
-                Gold -= 3000;
+                PlayerHP -= 100;
+                Gold -= 1500;
                 if (playerhitchance > 100)
                 {
                     playerhitchance = 100;
                 }
             }
-            else if (itemchoice == "3" && Wave >= 30 && Gold >= 15000)
+            else if (itemchoice == "3" && Wave >= 30 && Gold >=7500)
             {
                 Console.Clear();
                 Console.WriteLine("\nYou have become the King of Space-Time!\n");
                 playerhitchance = 100;
-                Gold -= 30000;
+                Gold -= 7500;
             }
             else if (itemchoice == "4")
             {
                 inShop = false;
+            }
+            else
+            {
+                Console.Clear();
             }
 
 
@@ -430,7 +443,7 @@ Main Menu
 
             if (turn <= playerhitchance)
             {
-                Console.WriteLine("Player goes first!");
+                Console.WriteLine("\nPlayer goes first!");
                 int PlayerDMG = Random.Shared.Next(PlayerMinDmg, PlayerMaxDmg);
                 Console.WriteLine($"{playername}'s turn!");
                 MonsterHP -= PlayerDMG;
@@ -441,14 +454,13 @@ Main Menu
                     Console.WriteLine($"{monster} has been defeated!");
                     break;
                 }
-
+                Console.WriteLine($"\n");
                 int MonsterDMG = Random.Shared.Next(MonsterMinDMG, MonsterMaxDMG);
-                Console.WriteLine("");
                 Console.WriteLine($"{monster}'s turn!");
                 PlayerHP -= MonsterDMG;
                 if (PlayerHP < 0) PlayerHP = 0;
                 Console.WriteLine($"{monster} did {MonsterDMG} DMG");
-                Console.WriteLine($"{name}'s HP:{PlayerHP}, Monster HP: {MonsterHP}");
+                Console.WriteLine($"{playername}'s HP:{PlayerHP}, Monster HP: {MonsterHP}");
                 Console.WriteLine("Press a button to continue");
                 Console.ReadLine();
 
@@ -456,6 +468,7 @@ Main Menu
             }
             else if (turn > playerhitchance)
             {
+                Console.WriteLine($"\n{monster} goes first!");
                 int MonsterDMG = Random.Shared.Next(MonsterMinDMG, MonsterMaxDMG);
                 Console.WriteLine($"{monster}'s turn!");
                 PlayerHP -= MonsterDMG;
@@ -468,7 +481,7 @@ Main Menu
                 }
 
                 int PlayerDMG = Random.Shared.Next(PlayerMinDmg, PlayerMaxDmg);
-                Console.WriteLine($"{playername}'s turn!");
+                Console.WriteLine($"\n{playername}'s turn!");
                 MonsterHP -= PlayerDMG;
                 if (MonsterHP < 0) MonsterHP = 0; // Prevents hp going under 0
                 Console.WriteLine($"{playername} did {PlayerDMG} DMG");
@@ -480,13 +493,14 @@ Main Menu
         }
 
         Console.WriteLine("Fight over!");
-        Console.WriteLine($"Player HP:{PlayerHP}, Monster HP: {MonsterHP}");
+        Console.WriteLine($"Player HP:{PlayerHP}, {monster}'s HP: {MonsterHP}");
         if (PlayerHP >= 0 && MonsterHP == 0)
         {
             Console.Clear();
             Console.WriteLine("You won");
             Wave += 1;
             Gold += 50 * Wave / 2;
+            PlayerHP = BaseHP;
 
         }
         else if (PlayerHP == 0 && MonsterHP >= 0)
