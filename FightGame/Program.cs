@@ -1,25 +1,16 @@
-﻿
+﻿using FighterSystem;
     
     string playername = "";
     Console.WriteLine("Welcome to the Fighting Game!");
     Console.WriteLine("What's your name?");
     playername = Console.ReadLine();
+    Fighter Mc = new Fighter(playername, 100, );
     bool running = true;
     Console.Title = "Fighting Game";
     int Wave = 1;
     int Gold = 0;
     bool Play = false;
     string mainmenu = "";
-    int BaseHP = 100;
-    int BaseMinDMG = 10;
-    int BaseMaxDMG = 26;
-    int PlayerHP = 100;
-    int PlayerMinDmg = 10;
-    int PlayerMaxDmg = 26;
-    int MonsterHP = 100;
-    int playerhitchance = 50;
-    int MonsterMinDMG = 10;
-    int MonsterMaxDMG = 31;
     
 while (running)
 {
@@ -45,7 +36,7 @@ while (running)
 
         4. Exit shop
 
-        Your current stats: HP:{PlayerHP}, Minimum Damage: {PlayerMinDmg}, Max Damage: {PlayerMaxDmg - 1}, Hitchance(%): {playerhitchance}.
+        Your current stats: HP:{Mc.Health}, Minimum Damage: {PlayerMinDmg}, Max Damage: {PlayerMaxDmg - 1}, Hitchance(%): {playerhitchance}.
         """);
 
         }
@@ -65,7 +56,7 @@ while (running)
 
         4. Exit shop
 
-        Your current stats: HP:{PlayerHP}, Minimum Damage: {PlayerMinDmg}, Max Damage: {PlayerMaxDmg - 1}, Hitchance(%): {playerhitchance}.
+        Your current stats: HP:{Mc.Health}, Minimum Damage: {PlayerMinDmg}, Max Damage: {PlayerMaxDmg - 1}, Hitchance(%): {playerhitchance}.
         """);
         }
         else if (Wave >= 10 && Wave < 15)
@@ -84,7 +75,7 @@ while (running)
 
         4. Exit shop
 
-        Your current stats: HP:{PlayerHP}, Minimum Damage: {PlayerMinDmg}, Max Damage: {PlayerMaxDmg - 1}, Hitchance(%): {playerhitchance}.
+        Your current stats: HP:{Mc.Health}, Minimum Damage: {PlayerMinDmg}, Max Damage: {PlayerMaxDmg - 1}, Hitchance(%): {playerhitchance}.
         """);
         }
         else if (Wave >= 15 && Wave < 30)
@@ -103,7 +94,7 @@ while (running)
 
         4. Exit shop
 
-        Your current stats: HP:{PlayerHP}, Minimum Damage: {PlayerMinDmg}, Max Damage: {PlayerMaxDmg - 1}, Hitchance(%): {playerhitchance};
+        Your current stats: HP:{Mc.Health}, Minimum Damage: {PlayerMinDmg}, Max Damage: {PlayerMaxDmg - 1}, Hitchance(%): {playerhitchance};
         """);
         }
         else if (Wave >= 30)
@@ -122,7 +113,7 @@ while (running)
 
         4. Exit shop
 
-        Your current stats: HP:{PlayerHP}, Minimum Damage: {PlayerMinDmg}, Max Damage: {PlayerMaxDmg - 1}, Hitchance(%): {playerhitchance};
+        Your current stats: HP:{Mc.Health}, Minimum Damage: {PlayerMinDmg}, Max Damage: {PlayerMaxDmg - 1}, Hitchance(%): {playerhitchance};
         """);
         }
     }
@@ -218,8 +209,7 @@ Main Menu
                 Console.WriteLine("\nMisfortune Cloth Puppet bought!\n");
                 PlayerMaxDmg -= 3;
                 PlayerMinDmg -= 3;
-                PlayerHP += 25;
-                BaseHP += 25;
+                Mc.Health += 25;
                 Gold -= 40;
             }
             else if (itemchoice == "2" && Wave >= 5 && Wave < 10 && Gold >= 150)
@@ -228,8 +218,7 @@ Main Menu
                 Console.WriteLine("\nPrideful Armor bought!\n");
                 PlayerMaxDmg -= 5;
                 PlayerMinDmg -= 5;
-                BaseHP += 50;
-                PlayerHP += 50;
+                Mc.Health += 50;
                 Gold -= 150;
             }
             else if (itemchoice == "2" && Wave >= 10 && Wave < 15 && Gold >= 300)
@@ -238,8 +227,7 @@ Main Menu
                 Console.WriteLine("\nBerserker's Armor bought!\n");
                 PlayerMaxDmg -= 10;
                 PlayerMinDmg -= 10;
-                BaseHP += 100;
-                PlayerHP += 100;
+                Mc.Health += 100;
                 Gold -= 300;
             }
             else if (itemchoice == "2" && Wave >= 15 && Wave < 30 && Gold >= 500)
@@ -248,25 +236,23 @@ Main Menu
                 Console.WriteLine("\nBlack Emperor's Crown bought!\n");
                 PlayerMaxDmg -= 15;
                 PlayerMinDmg -= 15;
-                BaseHP += 150;
-                PlayerHP += 150;
+                Mc.Health += 150;
                 Gold -= 500;
             }
             else if (itemchoice == "2" && Wave >= 30 && Gold >= 1500)
             {
                 Console.Clear();
                 Console.WriteLine("\nAuthority of Miracles bought!\n");
-                BaseHP += 1000;
-                PlayerHP += 1000;
+                Mc.Health += 1000;
                 Gold -= 1500;
             }
             else if (itemchoice == "3" && Wave < 5 && Gold >= 100 && BaseHP > 15)
             {
                 Console.Clear();
                 Console.WriteLine("\nSpirit Medium's Mirror bought!\n");
-                playerhitchance += 3;
+                playercritchance += 3;
                 BaseHP -= 10;
-                PlayerHP -= 10;
+                Mc.Health -= 10;
                 Gold -= 100;
                 
             }
@@ -274,9 +260,9 @@ Main Menu
             {
                 Console.Clear();
                 Console.WriteLine("\nCreeping Hunger bought!\n");
-                playerhitchance += 5;
+                playerctitchance += 5;
                 BaseHP -= 25;
-                PlayerHP -= 25;
+                Mc.Health -= 25;
                 Gold -= 300;
                 
             }
@@ -284,7 +270,7 @@ Main Menu
             {
                 Console.Clear();
                 Console.WriteLine("\nEye of Omniscience bought!\n");
-                playerhitchance += 7;
+                playerctitchance += 7;
                 BaseHP -= 50;
                 PlayerHP -= 50;
                 Gold -= 500;
@@ -294,7 +280,7 @@ Main Menu
             {
                 Console.Clear();
                 Console.WriteLine("\nDie of Probability bought!\n");
-                playerhitchance += 10;
+                playerctitchance += 10;
                 BaseHP -= 100;
                 PlayerHP -= 100;
                 Gold -= 1500;
@@ -304,7 +290,7 @@ Main Menu
             {
                 Console.Clear();
                 Console.WriteLine("\nYou have become the King of Space-Time!\n");
-                playerhitchance = 100;
+                playerctitchance = 100;
                 Gold -= 7500;
             }
             else if (itemchoice == "4")
@@ -314,7 +300,7 @@ Main Menu
             else if (itemchoice != "1" && itemchoice != "2" && itemchoice != "3" && itemchoice != "4")
             {
                 Console.Clear();
-                Console.WriteLine("Invalid choice!")
+                Console.WriteLine("Invalid choice!");
             }
 
 
@@ -410,24 +396,8 @@ Main Menu
         string monster = monsters[Random.Shared.Next(monsters.Length)];
         int Round = 1;
         string choice = "";
-        if (PlayerMinDmg < 0)
-        {
-            PlayerMinDmg = 0;
-        }
-        if (PlayerMaxDmg < 0)
-        {
-            PlayerMaxDmg = 0;
-        }
-        if (playerhitchance < 0)
-        {
-            playerhitchance = 0;
-        }
-        if (playerhitchance > 100)
-        {
-            playerhitchance = 100;
-        }
         Console.WriteLine($"\nWave {Wave}");
-        while (PlayerHP > 0 && MonsterHP > 0)
+        while (playername.health > 0 && MonsterHP > 0)
         {
             Console.WriteLine($"Round {Round}");
 
@@ -504,7 +474,6 @@ Main Menu
             Console.ReadLine();
             Wave = 1;
             Gold = 0;
-            PlayerHP = BaseHP;
             PlayerMaxDmg = BaseMaxDMG;
             PlayerMinDmg = BaseMinDMG;
 
@@ -514,5 +483,3 @@ Main Menu
         Play = false;
     }
 }
-        }
-    
