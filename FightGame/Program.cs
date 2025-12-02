@@ -1,10 +1,23 @@
 ﻿using FighterSystem;
     
+    /*
+    TODO: 
+    1. Make it work using fighter method
+    Expand the game
+    (
+    Add a map instead of linear proggresion
+    Levelling(Maybe stat window if i bother)
+    Item drops from diffrent enemies
+    Preferably crafting to encourage going back to old areas
+    )
+
+
+    */
     string playername = "";
     Console.WriteLine("Welcome to the Fighting Game!");
     Console.WriteLine("What's your name?");
     playername = Console.ReadLine();
-    Fighter Mc = new Fighter(playername, 100, );
+    Fighter Mc = new Fighter(playername, 100, 25, 10);
     bool running = true;
     Console.Title = "Fighting Game";
     int Wave = 1;
